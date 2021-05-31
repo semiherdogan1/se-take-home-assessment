@@ -1,0 +1,67 @@
+POST http://ideasoft.test/api/register
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Semih ERDOGAN",
+    "email": "semih@semiherdogan.net",
+    "password": "XXXXXXXX"
+}
+
+###
+
+POST http://ideasoft.test/api/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "semih@semiherdogan.net",
+    "password": "XXXXXXXX"
+}
+
+> {%
+    client.global.set('auth_token', response.body.data.access_token)
+%}
+
+###
+
+GET http://ideasoft.test/api/products
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+###
+
+GET http://ideasoft.test/api/orders
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+###
+
+POST http://ideasoft.test/api/orders
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+    "product_id": 3,
+    "quantity": 3
+}
+
+###
+
+DELETE http://ideasoft.test/api/orders
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+    "product_id": 1
+}
+
+###
+
+GET http://ideasoft.test/api/discounts
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+###
