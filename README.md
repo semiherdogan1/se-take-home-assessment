@@ -297,7 +297,7 @@
 }
 ```
 
-### Success (bu no discounts) Response
+### Success (but no discounts) Response
 
 ```json
 {
